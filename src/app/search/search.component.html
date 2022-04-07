@@ -1,0 +1,10 @@
+<div class="d-flex justify-content-center">
+  <div>
+    <input type="search" id="form1" class="form-control input-size rounded-pill bg-dark-grey"
+    placeholder="Enter book name" [(ngModel)]="searchValue" [style.width]="inputWidth"/>
+  </div>
+  <button type="button" class="btn bg-dark-grey button-size rounded-pill ms-n5" [class.btn-warning]="isButtonStyleWarning" (click)="search(searchValue)">
+    <i class="fa fa-search" aria-hidden="true"></i>
+  </button>
+</div>
+

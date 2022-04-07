@@ -1,0 +1,5 @@
+<app-modal-success *ngIf="showSuccessWindow"></app-modal-success>
+<div class="md-form pink-textarea active-pink-textarea mb-1">
+  <textarea [(ngModel)]="userText" class="md-textarea form-control bg-black" rows="5" placeholder="Write your review here"></textarea>
+</div>
+<button class="btn bg-dark-green rounded-pill" (click)="sendReview()">Send</button>

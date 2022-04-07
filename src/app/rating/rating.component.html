@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-center align-items-center">
+  <div [style.--background-color]="backgroundColor" class="card">
+      <div class="d-flex justify-content-between align-items-center">
+          <div class="ratings">
+
+            <ng-container *ngFor="let star of countStars">
+              <i class="fa fa-star rating-color"></i>
+            </ng-container>
+
+            <ng-container *ngFor="let star of remainingStars">
+              <i class="fa fa-star"></i>
+            </ng-container>
+
+          </div>
+          <h5 class="review-count">{{rating}}</h5>
+      </div>
+  </div>
+</div>

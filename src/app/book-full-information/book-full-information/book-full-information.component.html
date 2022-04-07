@@ -1,0 +1,61 @@
+<div class="container-fluid w-100" *ngIf="isShow"
+appScroll (mouseWheelUp)="computeImageWidth($event)" (mouseWheelDown)="computeImageWidth($event)">
+  <div class="d-flex justify-content-center">
+    <div class="w-100">
+
+      <div class="row row-size" id="row-1">
+
+        <div class="col mt-6">
+
+          <div class="d-flex align-items-center">
+            <span class="w-100 d-flex justify-content-center img-container">
+              <img src="data:image/png;base64,{{book.imageCover}}" class="cover-size z-index-1" alt="Book cover"
+                #image>
+            </span>
+          </div>
+
+          <div class="w-100 align-middle mt-n20 position-relative">
+            <h1 class="main-color text-center">The Giver</h1>
+            <div class="w-100 position-absolute top-0 d-flex justify-content-center">
+              <div class="overflow-hidden cover-size d-flex justify-content-center position-relative" id="black" #text>
+                <h1 class="half-color text-center z-index-2">The Giver</h1>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="row row-size" id="row-2">
+
+        <div class="col-4 d-flex align-items-center">
+          <div class="w-100">
+            <h1 class="medium-h1 text-center">{{book.name}}</h1>
+            <p class="fs-2 text-center">{{book.created | dateWithoutTime}}</p>
+            <p class="fs-2 text-center">{{book.author}}</p>
+            <p class="fs-2 text-center">Pages number: {{book.pageSize}}</p>
+            <app-rating [rating]="book.rating" [backgroundColor]="'white'"></app-rating>
+            <span class="d-flex justify-content-center"><button class="btn btn-outline-warning">Add in liked</button></span>
+          </div>
+        </div>
+        <div class="col-8 h-100">
+          <p class="d-flex align-items-center h-100 fs-2 text-center overflow-hidden">{{book.description}}</p>
+        </div>
+        <div class="col"></div>
+
+      </div>
+
+
+      <div class="row" id="row-1">
+        <!-- <hr class="bg-white border-2 border-top border-white"> -->
+
+          <app-book-reviews [reviews]="book.reviews"></app-book-reviews>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+

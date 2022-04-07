@@ -1,0 +1,48 @@
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-8 col-lg-6 col-xl-3 offset-xl-1">
+        <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="loginUser(loginForm.value)">
+
+          <div>
+            <p class="text-center lead fw-normal mb-0 me-3">Sign in with</p>
+          </div>
+
+          <div class="divider d-flex align-items-center my-4">
+            <p class="text-center fw-bold mx-3 mb-0">Or</p>
+          </div>
+
+          <div *ngIf="showError" class="alert alert-danger" role="alert">
+            {{errorMessage}}
+          </div>
+
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <input type="text" id="username" formControlName="username" class="form-control form-control-lg"
+              placeholder="Enter a username" />
+          </div>
+          <p *ngIf="validateControl('username') && hasError('username', 'required')">Username is required</p>
+
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            <input type="password" id="password" formControlName="password" class="form-control form-control-lg"
+              placeholder="Enter password" />
+          </div>
+          <em *ngIf="validateControl('password') && hasError('password', 'required')">Password is required</em>
+
+          <div class="text-center text-lg-start mt-1 pt-2">
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;"
+              [disabled]="!loginForm.valid">Login</button>
+            </div>
+            <p class="text-center h-4 fw-bold mt-2 pt-1 mb-0">Don't have an account?
+              <a [routerLink]="['/registration']" class="h-4">Register</a>
+            </p>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

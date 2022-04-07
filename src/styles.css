@@ -1,1 +1,261 @@
-/* You can add global styles to this file, and also import other style files */
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=BioRhyme:wght@300&display=swap');
+
+@font-face {
+  font-family: "IntegralCF";
+  src: local("IntegralCF"), url(./assets/fonts/IntegralCF-DemiBold.ttf) format("truetype");
+}
+
+:root {
+  --main-bg-color: #e4db29;
+  --side-bg-color: #035163;
+  --inputs-tiles-bg-color: #000000;
+  --image-width: 18rem;
+  --nav-bar-bg-color: #000000;
+  --font-color: #ffffff;
+  --font-color-navbar-text: #727283;
+  --font-color-reviews: #000000;
+}
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #181818;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color:#b3b3b3;
+  font-size: 1.5em;
+}
+h1 {
+  /* font-family: 'BioRhyme', serif; */
+  font-family: 'IntegralCF';
+  color:#ffffff;
+  font-size: 1.5em;
+}
+
+.global {
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  background-color: #7386D5;
+  font-weight: 300;
+}
+p {
+  font-family: 'Raleway', serif;
+  /* font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
+  color:#ffffff;
+}
+a {
+  font-family: 'IntegralCF';
+  color:#ffffff;
+  font-size: 1.5em;
+  transition: .3s all ease;
+}
+
+a, a:hover {
+  color: var(--side-bg-color);
+  text-decoration: none !important;
+}
+
+.form-control {
+  border: none !important;
+  color: white !important;
+}
+
+.form-control:focus {
+  background-color: #000000 !important;
+  color: white !important;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 20px var(--side-bg-color);
+}
+
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(121, 110, 110);
+  opacity: 1; /* Firefox */
+}
+
+.btn-black {
+  background: #000000;
+  color: #fff;
+}
+
+.btn-black:hover {
+  background: #615f5f;
+  color: #fff;
+}
+
+.btn-funky-moon {
+  background: #A770EF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(145deg, #FDB99B, #CF8BF3, #A770EF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(145deg, #FDB99B, #CF8BF3, #A770EF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+}
+
+.btn-funky-moon:hover {
+  background: #A770EF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(145deg, #FDB99B, #CF8BF3, #A770EF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(145deg, #FDB99B, #CF8BF3, #A770EF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: var(--side-bg-color);
+}
+
+.btn-funky-green {
+  background: var(--side-bg-color);  /* fallback for old browsers */
+  background: -webkit-linear-gradient(145deg, #FDB99B, #CF8BF3, #A770EF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(145deg, #FDB99B, #CF8BF3, #A770EF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+}
+
+footer {
+  /* position:fixed; */
+  bottom:0px;
+  width:100%;
+}
+
+label {
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color:#b3b3b3;
+}
+
+hr {
+  margin: 1rem 0;
+  color: inherit;
+  background-color: currentColor;
+  border: 0;
+  opacity: 0.25;
+}
+
+.font-yellow {
+  color: var(--main-bg-color);
+}
+
+.font-green {
+  color: var(--side-bg-color);
+}
+
+.bg-yellow {
+  background-color: var(--main-bg-color);
+}
+
+.bg-green {
+  background-color: var(--side-bg-color);
+}
+
+.fs-2 {
+  font-size: 2em !important;
+ }
+
+.fs-1 {
+  font-size: 1.5em !important;
+}
+
+.fs-min {
+  font-size: 1em !important;
+}
+
+.fs-medium {
+  font-size: 1.2em !important;
+}
+
+.font-color-gray {
+  color: gray;
+}
+
+.margin-top-10 {
+  margin-top: 10rem;
+}
+
+.height-20 {
+  height: 100px;
+}
+
+.avatar-size {
+  width: 100px;
+  height: 100px;
+}
+
+.logo-size {
+  width: 50px;
+  height: 50px;
+}
+
+.light-gray {
+  color: #727283;
+}
+
+.ft-weight {
+  font-weight: 600;
+}
+
+.bg-dark-grey {
+  background-color: #313135;
+}
+
+.bg-grey {
+  background-color: #646467;
+}
+
+.bg-dark-green {
+  background-color: #035163;
+}
+
+button.bg-dark-green:hover {
+  background-color: rgb(79, 79, 231);
+}
+
+.mt-6 {
+  margin-top: 4rem;
+}
+
+.mt-n3 {
+  margin-top: -1rem;
+}
+
+.ms-n3 {
+  margin-left: -10rem;
+}
+
+.mb-0-3 {
+  margin-bottom: 0.3rem;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mb-6 {
+  margin-bottom: 8rem;
+}
+
+.mt-8 {
+  margin-top: 7rem;
+}
+
+.mt-n20 {
+  margin-top: -20rem;
+}
+
+.ms-15 {
+  margin-left: 15rem;
+}
+
+.z-index-1 {
+ z-index: 1;
+}
+
+.z-index-2 {
+  z-index: 2;
+}
+
+.w-30 {
+  width: 30%;
+}

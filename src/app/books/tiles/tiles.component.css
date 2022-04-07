@@ -1,0 +1,93 @@
+img {
+  height: 100%;
+  width: 100%;
+}
+
+a {
+  all: initial;
+}
+
+a:hover {
+  color: var(--main-bg-color);
+}
+
+.img-container {
+  height: 20rem;
+  width: 100%;
+}
+
+.tile {
+  width: 15rem;
+  height: 31rem;
+  background-color: var(--inputs-tiles-bg-color);
+}
+
+.bg-size {
+  background-size: contain;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.icon-style:hover {
+  transform:  scale(1.5);
+  height: 20rem;
+  width: 100%;
+}
+
+.icon-size {
+  width: 20px;
+  height: 20px;
+}
+
+.bg-icon {
+  background-color: transparent;
+}
+
+.icon-style {
+  margin-top: 2.2px;
+  margin-left: 3px;
+  color: white;
+}
+
+.size {
+  width: 40px;
+  height: 40px;
+}
+
+.details .popup {
+  position: absolute;
+  margin-bottom: 150px;
+  margin-left: -100px;
+  display: none;
+}
+
+.details:hover .details {
+  transform: scale(1.2);
+}
+
+.details:hover .details {
+  width: 100%;
+  height: 20rem;
+  overflow: hidden;
+}
+
+.img-container > img {
+  width: 100%;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 3s ease;
+}
+
+.border-rad-25 {
+  border-radius: 25px;
+}
+
+
+.title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

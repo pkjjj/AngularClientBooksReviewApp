@@ -1,0 +1,49 @@
+div#row-1 {
+  background-color: rgb(249, 249, 249);
+}
+
+div#row-2 {
+  background-color: rgb(255, 255, 255);
+}
+
+p {
+  font-size: 1.8rem !important;
+  font-weight: 500;
+  color: black;
+}
+
+h1 {
+  font-family: 'IntegralCF';
+  font-size: 8rem;
+  font-weight: 900;
+  font-style: normal;
+  color: white;
+  white-space: pre;
+}
+
+.row-size {
+  height: 40rem
+}
+
+.cover-size {
+  width: var(--image-width);
+  height: 30rem;
+}
+
+.half-color {
+  color:rgb(255, 255, 255);
+}
+
+.main-color {
+  color:rgb(0, 0, 0);
+}
+
+.medium-h1 {
+  font-family: 'IntegralCF';
+  font-size: 1.8rem;
+  font-weight: 900;
+  font-style: normal;
+  color: rgb(0, 0, 0);
+  white-space: pre;
+}
+

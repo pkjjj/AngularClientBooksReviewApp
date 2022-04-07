@@ -1,0 +1,11 @@
+div.row {
+  background-color: var(--nav-bar-bg-color);
+}
+
+h1#title {
+  color: var(--font-color);
+}
+
+a {
+  color: var(--font-color-navbar-text);
+}

@@ -1,0 +1,32 @@
+<!-- <app-search (changeItems)="changeBookArrayBySearch($event)" [itemsForSearch]="arrayForSearch"></app-search> -->
+<div *ngIf="isLoaded">
+  <app-home-page-book-slider [books]="outputBooks"></app-home-page-book-slider>
+  <div class="mt-5">
+    <h1 class="text-center mb-3">Latest books</h1>
+    <app-tiles [books]="latestBooks"></app-tiles>
+  </div>
+
+  <div class="skew-c"></div>
+<div class="colour-block">
+  <h1>We Are BookReviewer</h1>
+  <p>
+    We believe in the power of reading, the importance of literacy,
+    and the fact that books should be as inclusive and diverse
+    as readers are. Being BookReviewer is part of our identity,
+    and it’s one we’re proud to have and share with you.</p>
+</div>
+<div class="skew-cc"></div>
+
+  <div class="mt-8">
+    <h1 class="text-center">Explore books world</h1>
+    <div class="container mt-3">
+      <app-sorting (changeItems)="changeBookArrayByFilter($event)" [itemsForSort]="sourceBooks"></app-sorting>
+    </div>
+    <div class="mt-3">
+      <app-tiles [books]="outputBooks"></app-tiles>
+    </div>
+  </div>
+
+</div>
+
+

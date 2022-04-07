@@ -1,0 +1,74 @@
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-8 col-lg-6 col-xl-3 offset-xl-1">
+        <form [formGroup]="registerForm" autocomplete="off" novalidate (ngSubmit)="registerUser(registerForm.value)">
+          <div>
+            <p class="text-center lead fw-normal mb-0 me-3">Sign up</p>
+          </div>
+
+          <div class="divider d-flex align-items-center my-4">
+          </div>
+
+          <div *ngIf="showError" class="alert alert-danger" role="alert">
+            <span [innerHTML]="errorMessages"></span>
+          </div>
+          <!-- Name input -->
+          <div class="form-outline mb-4">
+            <input type="text" id="formName" formControlName="name" class="form-control form-control-lg"
+              placeholder="Enter name" />
+          </div>
+
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <input type="email" id="formEmail" formControlName="email" class="form-control form-control-lg"
+              placeholder="Enter a valid email address" />
+            <div class="col-md-5">
+              <p *ngIf="validateControl('email') && hasError('email', 'email')">Please provide a valid email</p>
+              <p *ngIf="validateControl('email') && hasError('email', 'required')">Email is required</p>
+            </div>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            <input type="password" id="formPassword" formControlName="password" class="form-control form-control-lg"
+              placeholder="Enter password" />
+            <div class="col-md-5">
+              <em *ngIf="validateControl('password') && hasError('password', 'required')">Password is required</em>
+            </div>
+          </div>
+
+
+          <!-- Second password input -->
+          <div class="form-outline mb-3">
+            <input type="password" id="formSecondPassword" formControlName="confirmPassword" class="form-control form-control-lg"
+              placeholder="Repeat password" />
+            <div class="col-md-5">
+              <p *ngIf="validateControl('confirmPassword') && hasError('confirmPassword', 'required')">Confirmation is required</p>
+              <p *ngIf="hasError('confirmPassword', 'mustMatch')">Passwords must match</p>
+            </div>
+          </div>
+
+          <!-- Checkbox not implemented-->
+          <!-- <div class="form-check mb-5">
+            <input class="form-check-input me-2" type="checkbox" value="" id="formCheckbox"/>
+            <label class="form-check-label" for="formCheckbox">
+              I agree with all statements
+            </label>
+          </div> -->
+
+          <div class="text-lg-start mt-4 pt-2">
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;" [disabled]="!registerForm.valid">Register</button>
+            </div>
+            <p class="text-center h-4 fw-bold mt-2 pt-1 mb-0">Have already an account?
+              <a href="#!" routerLink="/login" class="h-4" [routerLink]="['/registration']">Login here</a>
+            </p>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

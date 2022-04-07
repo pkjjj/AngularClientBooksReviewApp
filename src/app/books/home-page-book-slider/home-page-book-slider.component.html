@@ -1,0 +1,17 @@
+<ng-container *ngFor="let book of books; index as i">
+  <div class="container slider" #itemElement [id]="i">
+    <div class="row">
+      <div class="col-9 d-flex align-items-center">
+        <span class="ms-5">
+          <h1>{{book.name}}</h1>
+          <p class="mt-5">{{book.description}}</p>
+          <button class="w-25 btn btn-funky-moon rounded-pill">View Book</button>
+        </span>
+      </div>
+      <div class="col-3">
+        <img src="data:image/png;base64,{{book.imageCover}}" class="rounded-3" alt="BookImage">
+      </div>
+    </div>
+  </div>
+</ng-container>
+

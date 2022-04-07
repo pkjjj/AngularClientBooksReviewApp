@@ -1,0 +1,28 @@
+<div class="container">
+
+  <div class="mt-6 mb-5">
+    <h1 class="text-center">WRITE YOUR REVIEW</h1>
+  </div>
+
+  <!-- <app-rating  [rating]="reviews[0].rating" [backgroundColor]="backgroundColorForRating"></app-rating> -->
+
+  <div class="d-flex align-items-center mb-3">
+    <a class="d-inline fs-min" (click)="checkOnAuthentication()">Start your review of this book</a>
+    <!-- <button class="btn btn-black ms-3 rounded-pill" >Write</button> -->
+  </div>
+
+  <div class="mb-6">
+    <app-writting-review [book]=""></app-writting-review>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="d-flex justify-content-center" id="reviews-content">
+    <div class="mt-6 mb-5">
+      <h1 class="text-center">COMMUNITY REVIEWS</h1>
+    </div>
+    <app-review [reviews]="reviews" [book]=""></app-review>
+  </div>
+</div>
+

@@ -1,0 +1,21 @@
+div {
+  --black: #ffffff;
+}
+
+.modal-custom {
+  width: 300px;
+  height: auto;
+  z-index: 2;
+}
+
+.modal-headercolor {
+  background-color: #0dcaf0;
+}
+
+p {
+  font-weight: 300;
+}
+
+h1 {
+  color: var(--black);
+}
