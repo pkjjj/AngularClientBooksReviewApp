@@ -38,4 +38,12 @@ export class AuthenticationService {
     return role === 'Administrator';
   }
 
+  public getUserIdFromToken() {
+    const token = localStorage.getItem("token");
+    const decodedToken = this._jwtHelper.decodeToken(token);
+    const userId = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
+
+    return userId;
+  }
+
 }

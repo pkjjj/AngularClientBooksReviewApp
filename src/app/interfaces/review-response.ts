@@ -1,12 +1,11 @@
 import { Book } from "./book";
-import { User } from "./user";
 
-export interface Review {
+export interface ReviewResponse {
   id?: string;
   description: string;
   created: Date;
   rating?: number;
-  book: Book;
-  applicationUser: User;
+  bookId: string;
+  userToken: string;
   isOverflow?: boolean;
 }

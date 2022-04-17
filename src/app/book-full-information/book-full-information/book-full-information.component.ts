@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, ElementRef, inject, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/interfaces/book';
 import { RequestService } from 'src/app/shared/services/request.service';
@@ -12,8 +12,6 @@ import { RequestService } from 'src/app/shared/services/request.service';
 export class BookFullInformationComponent implements OnInit {
 
   @Input() public book: Book;
-  @ViewChild('image') public imageElement: ElementRef;
-  @ViewChild('text') public h1Element: ElementRef;
   public bookName: string[];
   public bookId: string;
   public readonly backgroundColorForRating = "black";
@@ -62,6 +60,9 @@ export class BookFullInformationComponent implements OnInit {
     .subscribe((book: Book) => {
       this.book = book;
       this.bookName = [...this.book.name];
+      book.reviews.forEach(el => {
+        el.isOverflow = false;
+      });
       this.isShow = true;
     });
   }

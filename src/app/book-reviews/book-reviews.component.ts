@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Book } from '../interfaces/book';
 import { Review } from '../interfaces/review';
 import { AuthenticationService } from '../shared/services/authentication.service';
 
@@ -7,14 +8,21 @@ import { AuthenticationService } from '../shared/services/authentication.service
   templateUrl: './book-reviews.component.html',
   styleUrls: ['./book-reviews.component.css']
 })
-export class BookReviewsComponent {
+export class BookReviewsComponent implements OnInit {
 
-  @Input() public reviews: Review[];
+  @Input() public book: Book;
   @Input() public countVisibleLines = 2;
+  public reviews: Review[];
   public readonly backgroundColorForRating = "black";
   public show = false;
 
-  constructor(private _authnServise: AuthenticationService) { }
+  constructor(private _authnServise: AuthenticationService) {
+
+  }
+
+  ngOnInit(): void {
+    this.reviews = this.book.reviews;
+  }
 
   public checkOnAuthentication() {
     if (!this._authnServise.isUserAuthenticated()) {
@@ -26,4 +34,7 @@ export class BookReviewsComponent {
     }
   }
 
+  public changeReviewsByDateFilter(reviews: Object[]) {
+    this.reviews = reviews as Review[];
+  }
 }

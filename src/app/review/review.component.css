@@ -17,6 +17,10 @@ a:hover {
   color: rgb(79, 79, 231);
 }
 
+span#title-review p {
+  font-weight: 600;
+}
+
 .several-lines {
   display: -webkit-box;
   max-width: 1000px;
@@ -29,10 +33,15 @@ a:hover {
   cursor: pointer;
 }
 
+/* remake */
 .all-lines {
   display: -webkit-box;
   max-width: 1000px;
   -webkit-line-clamp: 100;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.ms-col2 {
+  left: 42.6rem;
 }

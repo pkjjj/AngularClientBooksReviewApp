@@ -1,0 +1,54 @@
+<div class="bg-green">
+  <div class="container w-60">
+    <div class="row" id="descriptionRow">
+
+      <div class="col-3 d-flex align-items-end">
+        <!-- <p>{{user.name}}</p> -->
+        <p>@Puk - </p>
+      </div>
+
+      <div class="col-6 d-flex justify-content-center align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <!-- <img src="data:image/png;base64,{{user.avatar}}" alt="Avatar" class="avatar-size rounded-circle"> -->
+          <h1>Pavel Komandyshko</h1>
+        </div>
+      </div>
+
+      <div class="col-3 d-flex align-items-end">
+        <p>Some content</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Nav bar -->
+<div class="container w-75">
+  <nav class="menu inner-menu horizontal-nav">
+    <ul class="menu-actions">
+      <li>
+        <a class="menu-entry" routerLink="/profile">
+          <span>Activity</span>
+        </a>
+      </li>
+      <li>
+        <a class="menu-entry active" (click)="navigateToProfileChild('reviews')">
+          <span>Library</span>
+          <span class="counter">2</span>
+        </a>
+      </li>
+      <li>
+        <a class="menu-entry" (click)="navigateToProfileChild('reviews')">
+          <span>Reviews</span>
+          <span class="counter">0</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<!-- Content -->
+<div class="container w-75">
+  <router-outlet></router-outlet>
+</div>
+

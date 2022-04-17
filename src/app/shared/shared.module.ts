@@ -12,6 +12,7 @@ import { ModalSuccessComponent } from '../modal-success/modal-success.component'
 import { ReviewComponent } from '../review/review.component';
 import { ScrollDirective } from '../directives/scroll.directive';
 import { WrittingReviewComponent } from '../writting-review/writting-review.component';
+import { DateFilterComponent } from '../date-filter/date-filter.component';
 
 
 
@@ -25,6 +26,7 @@ import { WrittingReviewComponent } from '../writting-review/writting-review.comp
     ReviewComponent,
     ScrollDirective,
     WrittingReviewComponent,
+    DateFilterComponent,
   ],
   imports: [
     CommonModule,
@@ -42,7 +44,8 @@ import { WrittingReviewComponent } from '../writting-review/writting-review.comp
     BookReviewsComponent,
     ModalSuccessComponent,
     ScrollDirective,
-    WrittingReviewComponent
+    WrittingReviewComponent,
+    DateFilterComponent,
   ]
 })
 export class SharedModule { }

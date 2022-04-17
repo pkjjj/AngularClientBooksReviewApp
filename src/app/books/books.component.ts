@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../interfaces/book';
 import { RequestService } from '../shared/services/request.service';
+import * as cloneDeep from 'lodash/cloneDeep';
 
 @Component({
   selector: 'app-books',
@@ -9,12 +10,12 @@ import { RequestService } from '../shared/services/request.service';
 })
 export class BooksComponent implements OnInit {
 
-  public sourceBooks: Book[];
   public outputBooks: Book[];
   public arrayForSearch: string[] = [];
   public isLoaded: boolean;
   public readonly countLatestBooks = 5;
   public latestBooks: Book[];
+  public sourceBooks: Book[];
 
   constructor(private _requestService: RequestService) { }
 
@@ -24,17 +25,15 @@ export class BooksComponent implements OnInit {
 
   public loadBooks() {
     this._requestService.getData("books/getbooks")
-    .subscribe((res: Book[]) => {
-      console.log(res);
-      this.sourceBooks = res;
-      this.outputBooks = res;
+    .subscribe((books: Book[]) => {
+      this.sourceBooks = books;
+      this.outputBooks = books;
       this.makeBookNamesArray();
 
-      this.latestBooks = this.copyBookArray(this.outputBooks);
+      this.latestBooks = cloneDeep(this.outputBooks);
       this.computeLatestBooks(this.latestBooks);
-     
+
       this.isLoaded = true;
-      console.log(this.outputBooks, this.isLoaded);
     });
   }
 
@@ -48,8 +47,8 @@ export class BooksComponent implements OnInit {
     });
   }
 
-  public changeBookArrayByFilter(resultBooksArray: Book[]) {
-    this.outputBooks = resultBooksArray;
+  public changeBookArrayByFilter(resultBooksArray: Object[]) {
+    this.outputBooks = resultBooksArray as Book[];
   }
 
   public computeLatestBooks(books: Book[]) {
@@ -60,13 +59,5 @@ export class BooksComponent implements OnInit {
     this.latestBooks = books;
     this.latestBooks.length = this.countLatestBooks;
   }
-
-  private copyBookArray(books: Book[]) {
-    let resultedBooks = [];
-    for (var i = 0, len = books.length; i < len; i++) {
-      resultedBooks[i] = books[i];
-    }
-
-    return resultedBooks;
-  }
 }
+

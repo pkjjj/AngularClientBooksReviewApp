@@ -1,0 +1,20 @@
+<div class="container mt-6">
+  <div class="row">
+    <h1 class="float-left">My Reviews</h1>
+    <span class=""><app-date-filter [itemsForSort]="reviews" [propertyNameForSort]="'created'"></app-date-filter></span>
+  </div>
+  <div class="row">
+    <div class="mt-5">
+      <ng-container *ngFor="let review of reviews">
+        <figure>
+          <blockquote class="blockquote">
+            <p>{{review.description}}</p>
+          </blockquote>
+          <figcaption class="blockquote-footer">
+            Wrote for <cite title="Source Title">{{review.book.name}}</cite>
+          </figcaption>
+        </figure>
+      </ng-container>
+    </div>
+  </div>
+</div>

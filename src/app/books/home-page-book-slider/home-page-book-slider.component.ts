@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Book } from 'src/app/interfaces/book';
 
 @Component({
@@ -6,23 +6,24 @@ import { Book } from 'src/app/interfaces/book';
   templateUrl: './home-page-book-slider.component.html',
   styleUrls: ['./home-page-book-slider.component.css']
 })
-export class HomePageBookSliderComponent implements AfterViewInit {
+export class HomePageBookSliderComponent implements AfterViewInit, OnDestroy {
 
   @Input() public books: Book[];
   @ViewChildren('itemElement') public booksElements: QueryList<ElementRef>;
   private bookIndex = 0;
+  private timer: ReturnType<typeof setTimeout>;
 
-  constructor() {
-
-  }
+  constructor() {}
 
   ngAfterViewInit(): void {
     this.slideBooks();
-    console.log(this.booksElements);
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.timer);
   }
 
   private slideBooks() {
-    console.log(this.booksElements);
     this.booksElements.forEach((element, index) => {
       element.nativeElement.style.display = 'none';
 
@@ -37,6 +38,6 @@ export class HomePageBookSliderComponent implements AfterViewInit {
       this.bookIndex = 0;
     }
 
-    setTimeout(this.slideBooks.bind(this), 2000);
+    this.timer = setTimeout(this.slideBooks.bind(this), 2000);
   }
 }

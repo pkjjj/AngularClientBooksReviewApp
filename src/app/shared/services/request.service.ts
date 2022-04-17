@@ -6,6 +6,8 @@ import { UserForAuthentication } from 'src/app/interfaces/user-for-authenticatio
 import { AuthResponse } from 'src/app/interfaces/auth-response';
 import { environment } from 'src/environments/environment';
 import { Review } from 'src/app/interfaces/review';
+import { ReviewResponse } from 'src/app/interfaces/review-response';
+import { Subject } from 'rxjs';
 
 @Injectable()
 
@@ -24,12 +26,20 @@ export class RequestService {
     return this._http.post<AuthResponse>(this._url + 'account/Login', user);
   }
 
+  public getUser(id: string) {
+    return this._http.get(this._url + 'user/GetUser?id=' + id);
+  }
+
   public getData(route: string) {
     console.log(this._url + route);
     return this._http.get(this._url + route);
   }
 
-  public setReview(review: Review) {
+  public setReview(review: ReviewResponse) {
     return this._http.post(this._url + 'review/SaveReview', review);
+  }
+
+  public getReviews() {
+    return this._http.get(this._url + 'review/GetReviews');
   }
 }
