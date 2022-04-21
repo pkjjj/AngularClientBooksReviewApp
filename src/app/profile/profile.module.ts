@@ -13,7 +13,6 @@ import { SharedModule } from '../shared/shared.module';
     ProfileReviewsComponent
   ],
   imports: [
-    CommonModule,
     ProfileRoutingModule,
     SharedModule
   ]

@@ -23,13 +23,13 @@ export class ReviewComponent implements AfterViewInit {
   public refName = "more";
   public status = false;
 
-  constructor(private _requestService: RequestService, private _renderer: Renderer2,
+  constructor(private _renderer: Renderer2,
     private _reviewsService: ReviewsService) { }
 
   ngAfterViewInit(): void {
     this._reviewsService.getUpdatedReviews()
       .subscribe(reviews => {
-        console.log("update");
+        console.log(reviews);
         this.reviews = reviews;
       })
     setTimeout(() => {

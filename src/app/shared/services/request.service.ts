@@ -35,11 +35,27 @@ export class RequestService {
     return this._http.get(this._url + route);
   }
 
-  public setReview(review: ReviewResponse) {
+  public saveReview(review: ReviewResponse, isInsert: boolean) {
+    return isInsert === true ? this.insertReview(review) : this.updateReview(review);
+  }
+
+  private insertReview(review: ReviewResponse) {
     return this._http.post(this._url + 'review/SaveReview', review);
+  }
+
+  private updateReview(review: ReviewResponse) {
+    return this._http.post(this._url + 'review/UpdateReview', review);
   }
 
   public getReviews() {
     return this._http.get(this._url + 'review/GetReviews');
+  }
+
+  public getReviewsByBookId(id: string) {
+    return this._http.get(this._url + 'review/GetReviewsByBookId?id=' + id);
+  }
+
+  public getReviewsByUserId(id: string) {
+    return this._http.get(this._url + 'review/GetReviewsByUserId?id=' + id);
   }
 }

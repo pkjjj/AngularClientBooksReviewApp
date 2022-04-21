@@ -46,6 +46,7 @@ import { DateFilterComponent } from '../date-filter/date-filter.component';
     ScrollDirective,
     WrittingReviewComponent,
     DateFilterComponent,
+    ReviewComponent
   ]
 })
 export class SharedModule { }

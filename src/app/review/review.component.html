@@ -1,19 +1,21 @@
-<div class="mb-6">
-
   <ng-container *ngFor="let review of reviews">
     <div class="row mt-6">
 
-      <div class="col-2">
-        <img src="data:image/png;base64,{{review.applicationUser.avatar}}" alt="Avatar" class="avatar-size">
-        <p class="d-inline-block fs-min font-color-gray fw-bold element">{{review.applicationUser.name}}</p>
+      <div class="col-2 mb-4 w-fit-content">
+        <img *ngIf="review.applicationUser.avatar" src="data:image/png;base64,{{review.applicationUser.avatar}}" alt="Avatar" class="avatar-size">
+        <p class="fs-min font-color-gray fw-bold element">{{review.applicationUser.name}}</p>
       </div>
-      <div class="col-10">
+      <div class="col-10 w-fit-content max-width-description">
         <p class="fs-medium several-lines" id={{review.id}} #description>{{review.description}}</p>
         <a *ngIf="review.isOverflow" id={{review.id}} class="pointer" (click)="showAllText(review.id, refElement, description)" #refElement>more</a>
         <p class="fs-min font-color-gray fw-bold">{{review.created | dateWithoutTime}}</p>
       </div>
-    </div>
 
+    </div>
   </ng-container>
 
-</div>
+
+
+
+
+

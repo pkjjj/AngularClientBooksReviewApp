@@ -15,10 +15,12 @@ import { ReviewsService } from '../shared/services/reviews.service';
 export class WrittingReviewComponent {
 
   @Input() public book: Book;
-  public userText: string;
+  @Input() public review: Review;
   public showSuccessWindow = false;
   public showError = false
   public errorMessages: string;
+  public userText: string;
+  public hasError: boolean;
 
   constructor(private _requestService: RequestService, private _authService: AuthenticationService,
     private _reviewsService: ReviewsService) { }
@@ -37,6 +39,10 @@ export class WrittingReviewComponent {
 
     this.checkOnAuthentication();
 
+    if (this.isEmpty(this.userText)) {
+      return;
+    }
+
     const review: ReviewResponse = {
       userToken: localStorage.getItem("token"),
       bookId: this.book.id,
@@ -44,17 +50,51 @@ export class WrittingReviewComponent {
       created: new Date(),
     }
 
-    this._requestService.setReview(review)
-    .subscribe(_ => {
-      this._requestService.getReviews()
-        .subscribe((reviews: Review[]) => {
-          this._reviewsService.updateReviews(reviews);
-        })
-      this.showSuccessWindow = true;
-    },
-    error => {
-      this.errorMessages = error;
-      this.showError = true;
-    })
+    this.SaveReview(review, true);
+  }
+
+  public updateReview() {
+
+    this.checkOnAuthentication();
+
+    if (this.isEmpty(this.review.description)) {
+      return;
+    }
+
+    const review: ReviewResponse = {
+      id: this.review.id,
+      userToken: localStorage.getItem("token"),
+      bookId: this.book.id,
+      description: this.review.description,
+      created: new Date(),
+    }
+
+    this.SaveReview(review, false);
+  }
+
+  public isEmpty(text: string = "") {
+    if (!text) {
+      this.hasError = true;
+    }
+    else {
+      this.hasError = false;
+    }
+
+    return this.hasError;
+  }
+
+  private SaveReview(review: ReviewResponse, isInsert: boolean) {
+    this._requestService.saveReview(review, true)
+      .subscribe(_ => {
+        this._requestService.getReviewsByBookId(review.bookId)
+          .subscribe((reviews: Review[]) => {
+            this._reviewsService.updateReviews(reviews);
+          });
+        this.showSuccessWindow = true;
+      },
+        error => {
+          this.errorMessages = error;
+          this.showError = true;
+        });
   }
 }

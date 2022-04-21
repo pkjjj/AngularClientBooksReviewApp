@@ -13,6 +13,14 @@ a {
   cursor: pointer;
 }
 
+.img-col {
+  width: var(--profile-avatar-width);
+}
+
+.max-width-description {
+  max-width: 41rem;
+}
+
 a:hover {
   color: rgb(79, 79, 231);
 }
@@ -40,8 +48,4 @@ span#title-review p {
   -webkit-line-clamp: 100;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-.ms-col2 {
-  left: 42.6rem;
 }

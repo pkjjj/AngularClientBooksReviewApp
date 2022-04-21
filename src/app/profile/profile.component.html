@@ -22,33 +22,37 @@
   </div>
 </div>
 
-<!-- Nav bar -->
-<div class="container w-75">
-  <nav class="menu inner-menu horizontal-nav">
-    <ul class="menu-actions">
-      <li>
-        <a class="menu-entry" routerLink="/profile">
-          <span>Activity</span>
-        </a>
-      </li>
-      <li>
-        <a class="menu-entry active" (click)="navigateToProfileChild('reviews')">
-          <span>Library</span>
-          <span class="counter">2</span>
-        </a>
-      </li>
-      <li>
-        <a class="menu-entry" (click)="navigateToProfileChild('reviews')">
-          <span>Reviews</span>
-          <span class="counter">0</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-</div>
+<div class="text-center">
+  <!-- Nav bar -->
+  <div class="container w-75">
+    <nav class="menu inner-menu horizontal-nav">
+      <ul class="menu-actions">
+        <li>
+          <a class="menu-entry" routerLink="/profile">
+            <span>Activity</span>
+          </a>
+        </li>
+        <li>
+          <a class="menu-entry active" (click)="navigateToProfileChild('reviews')">
+            <span>Library</span>
+            <span class="counter">2</span>
+          </a>
+        </li>
+        <li>
+          <a class="menu-entry" (click)="navigateToProfileChild('reviews')">
+            <span>Reviews</span>
+            <span class="counter">0</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 
-<!-- Content -->
-<div class="container w-75">
-  <router-outlet></router-outlet>
-</div>
+  <hr class="bg-white mt-0">
+  <!-- Content -->
+  <div class="container w-75">
+    <router-outlet></router-outlet>
+  </div>
 
+
+</div>

@@ -30,13 +30,13 @@ export function tokenGetter() {
     ProfileComponent,
   ],
   imports: [
+    ProfileModule,
     BookFullInformationModule,
     BooksModule,
     RegistrationModule,
     LoginModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    ProfileModule,
     SharedModule,
     JwtModule.forRoot({
       config: {

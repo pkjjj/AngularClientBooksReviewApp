@@ -16,10 +16,15 @@ export class ProfileComponent implements OnInit {
   constructor(private _router: Router, private _route: ActivatedRoute, private _requestService: RequestService) { }
 
   ngOnInit(): void {
+    console.log("sdasdad");
     this.getRouteParameters();
     if (this.userId !== undefined) {
       this.getUser(this.userId);
     }
+  }
+
+  public navigateToProfileChild(route: string) {
+    this._router.navigate([route], { relativeTo: this._route, state: { reviews: this.user.reviews } });
   }
 
   private getRouteParameters() {
@@ -32,17 +37,10 @@ export class ProfileComponent implements OnInit {
   private getUser(userId: string) {
     this._requestService.getUser(userId)
     .subscribe((user: User) => {
-      console.log(user);
       this.user = user;
     },
     (error) => {
       throw error;
     })
   }
-
-  public navigateToProfileChild(route: string) {
-    console.log(this.user)
-    this._router.navigate([route], { relativeTo: this._route, state: { reviews: this.user.reviews } });
-  }
-
 }

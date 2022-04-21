@@ -17,10 +17,10 @@
 
 </div>
 <div class="row">
-  <div class="d-flex justify-content-center" id="reviews-content">
+  <div class="d-flex justify-content-left" id="reviews-content">
 
-    <div class="mt-5 mb-5">
-      <h1 class="text-center">COMMUNITY REVIEWS</h1>
+    <div class="w-40 m-5">
+      <h1 class="text-center">COMMUNITY<br> REVIEWS</h1>
       <div class="d-flex justify-content-center mt-3">
         <app-date-filter [itemsForSort]="reviews" [propertyNameForSort]="'created'"
         (changeItems)="changeReviewsByDateFilter($event)"></app-date-filter>
