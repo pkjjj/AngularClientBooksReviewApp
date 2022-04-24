@@ -29,6 +29,17 @@ export class AuthenticationService {
     return token && !this._jwtHelper.isTokenExpired(token);
   }
 
+  public checkOnAuthentication() {
+    if (!this.isUserAuthenticated()) {
+      this.logout();
+      
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
   public isUserAdmin() {
     // check undefined
     const token = localStorage.getItem("token");

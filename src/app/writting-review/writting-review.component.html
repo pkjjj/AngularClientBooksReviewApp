@@ -1,18 +1,18 @@
 <app-modal-success *ngIf="showSuccessWindow"></app-modal-success>
 
-<ng-container *ngIf="!review; else secondForm">
+<ng-container *ngIf="!review; else updateForm">
   <div class="md-form pink-textarea active-pink-textarea mb-1">
-    <textarea [(ngModel)]="userText" class="md-textarea form-control bg-black"
-    rows="5" placeholder="Write your review here" (ngModelChange)="isEmpty(userText)"></textarea>
+    <textarea [(ngModel)]="userTextForInsert" class="md-textarea form-control bg-black"
+    rows="5" placeholder="Write your review here" (ngModelChange)="isEmpty(userTextForInsert)"></textarea>
     <p class="text-danger" *ngIf="hasError">Review cannot be empty</p>
   </div>
   <button class="btn bg-dark-green rounded-pill" (click)="sendReview()">Send</button>
 </ng-container>
 
-<ng-template #secondForm>
+<ng-template #updateForm>
   <div class="md-form pink-textarea active-pink-textarea mb-1">
-    <textarea [(ngModel)]="review.description" class="md-textarea form-control bg-black"
-    rows="5" placeholder="Write your review here" (onkeyup)="isEmpty(review.description)"></textarea>
+    <textarea [(ngModel)]="userTextForInsert" class="md-textarea form-control bg-black"
+    rows="5" placeholder="Write your review here" (onkeyup)="isEmpty(userTextForInsert)"></textarea>
     <p class="text-danger" *ngIf="hasError">Review cannot be empty</p>
   </div>
 

@@ -1,1 +1,38 @@
-<p>profile-books works!</p>
+<div *ngIf="books" class="container mt-3">
+  <div class="row">
+
+    <div class="col mt-5">
+      <div>
+        <h1 id="title">My books</h1>
+
+        <ng-container *ngIf="_reviewsService as r">
+          <div *ngIf="books" class="d-flex justify-content-center mt-3">
+            <app-date-filter [itemsForSort]="books" [propertyNameForSort]="'created'"
+            (changeItems)="r.changeReviewsByDateFilter($event)"></app-date-filter>
+          </div>
+        </ng-container>
+
+      </div>
+    </div>
+
+    <div class="col mt-5 text-left">
+      <ng-container *ngFor="let book of books">
+
+        <div>
+          <img src="data:image/png;base64,{{book.imageCover}}" class="tile-size z-index-1" alt="Book cover">
+          <div class="d-inline-block position-absolute ms-3">
+            <p>{{book.author}}</p>
+            <p>Amount pages: {{book.pageSize}}</p>
+            <p class="mt-2">{{book.created | date }}</p>
+            <div class=""><app-rating [rating]="book.rating"></app-rating></div>
+            <button class="btn btn-outline-warning btn-active rounded-pill ms-2"
+                (click)="deleteBook(book.id)">Delete</button>
+          </div>
+        </div>
+
+      </ng-container>
+    </div>
+
+  </div>
+</div>
+

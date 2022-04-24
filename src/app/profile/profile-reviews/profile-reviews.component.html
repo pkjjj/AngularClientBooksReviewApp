@@ -4,12 +4,13 @@
     <div class="col mt-5">
       <div>
         <h1 id="title">My Reviews</h1>
-        <div class="d-flex justify-content-center mt-3">
-          <app-date-filter [itemsForSort]="reviews" [propertyNameForSort]="'created'"></app-date-filter>
+        <div *ngIf="reviews" class="d-flex justify-content-center mt-3">
+          <app-date-filter [itemsForSort]="reviews" [propertyNameForSort]="'created'"
+          (changeItems)="changeReviewsByDateFilter($event)"></app-date-filter>
         </div>
       </div>
-      <div class="mt-4" *ngIf="book">
-        <app-writting-review [book]="book" [review]="review"></app-writting-review>
+      <div class="mt-4" *ngIf="review">
+        <app-writting-review [review]="review"></app-writting-review>
       </div>
     </div>
 
@@ -21,13 +22,16 @@
               <p class="d-inline-block mt-5" id="description">{{review.description}}</p>
               <div class="">
                 <button class="btn btn-black rounded-pill ms-2"
-                (click)="showWrittingReviewComponent(review.book, review)">Edit</button>
+                (click)="showWrittingReviewComponent(review)">Edit</button>
+                <button class="btn btn-black rounded-pill ms-2"
+                (click)="deleteReview(review.id)">Delete</button>
               </div>
             </blockquote>
             <figcaption class="blockquote-footer">
-              Wrote for <cite title="Source Title">{{review.book.name}}</cite>
+              Wrote for <cite title="Source Title">{{review.bookName}}</cite>
             </figcaption>
           </figure>
+          <p>{{review.created | fullDatetime}}</p>
           <div class="pb-5"><app-rating [rating]="review.rating"></app-rating></div>
         </div>
       </ng-container>
@@ -35,4 +39,3 @@
 
   </div>
 </div>
-<!-- <app-review [reviews]="reviews" ></app-review> -->

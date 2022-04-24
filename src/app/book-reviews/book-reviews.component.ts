@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Book } from '../interfaces/book';
 import { Review } from '../interfaces/review';
+import { ReviewForFullBookInfo } from '../interfaces/review-for-full-book-info';
 import { AuthenticationService } from '../shared/services/authentication.service';
+import { RequestService } from '../shared/services/request.service';
 
 @Component({
   selector: 'app-book-reviews',
@@ -9,32 +11,30 @@ import { AuthenticationService } from '../shared/services/authentication.service
   styleUrls: ['./book-reviews.component.css']
 })
 export class BookReviewsComponent implements OnInit {
+  // remove book
 
   @Input() public book: Book;
   @Input() public countVisibleLines = 2;
-  public reviews: Review[];
+  public reviews: ReviewForFullBookInfo[];
   public readonly backgroundColorForRating = "black";
   public show = false;
 
-  constructor(private _authnServise: AuthenticationService) {
+  constructor(private _authnServise: AuthenticationService, private _requestService: RequestService) {
 
   }
 
   ngOnInit(): void {
-    this.reviews = this.book.reviews;
+    this.getReviewsModel();
   }
 
-  public checkOnAuthentication() {
-    if (!this._authnServise.isUserAuthenticated()) {
-      console.log("not auth")
-      this._authnServise.logout();
-    }
-    else {
-      this.show = true;
-    }
+  public getReviewsModel() {
+    this._requestService.getReviewsByBookId(this.book.id)
+      .subscribe((reviews: ReviewForFullBookInfo[]) => {
+        this.reviews = reviews;
+      });
   }
 
   public changeReviewsByDateFilter(reviews: Object[]) {
-    this.reviews = reviews as Review[];
+    this.reviews = reviews as ReviewForFullBookInfo[];
   }
 }

@@ -3,6 +3,7 @@ import { AfterViewInit, Component, ElementRef, inject, Input, OnInit, Renderer2,
 import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/interfaces/book';
 import { RequestService } from 'src/app/shared/services/request.service';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 
 @Component({
   selector: 'app-book-full-information',
@@ -22,13 +23,20 @@ export class BookFullInformationComponent implements OnInit {
   private readonly widthIncreasingFactor = 0.1;
 
   constructor(private _requestService: RequestService, private _route: ActivatedRoute,
-    private _renderer: Renderer2) { }
+    private _renderer: Renderer2, private _authService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.setNavBarStyle();
     this.getRouteParameters();
     this.getBook();
     this.width = this.defaultWidth;
+  }
+
+  public addBook() {
+    console.log("update user with book");
+    const userId = this._authService.getUserIdFromToken();
+    this._requestService.addBookToUser(this.bookId, userId)
+      .subscribe(_ => {console.log("ya ebat' ya eblan")});
   }
 
   // Method for smooth transition.

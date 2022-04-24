@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
 
   public user: User;
   public userId: string;
+  public isBooksActive: boolean;
 
   constructor(private _router: Router, private _route: ActivatedRoute, private _requestService: RequestService) { }
 
@@ -23,8 +24,14 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  public navigateToProfileChild(route: string) {
+  public navigateToProfileReviews(route: string) {
+    this.isBooksActive = false;
     this._router.navigate([route], { relativeTo: this._route, state: { reviews: this.user.reviews } });
+  }
+
+  public navigateToProfileBooks(route: string) {
+    this.isBooksActive = true;
+    this._router.navigate([route], { relativeTo: this._route, state: { books: this.user.books } });
   }
 
   private getRouteParameters() {
@@ -37,6 +44,7 @@ export class ProfileComponent implements OnInit {
   private getUser(userId: string) {
     this._requestService.getUser(userId)
     .subscribe((user: User) => {
+      console.log(user);
       this.user = user;
     },
     (error) => {

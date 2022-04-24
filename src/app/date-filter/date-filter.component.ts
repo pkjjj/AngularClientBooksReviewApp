@@ -16,6 +16,7 @@ export class DateFilterComponent {
   constructor() {}
 
   public sort(option: string) {
+    console.log(this.itemsForSort)
     this.sortedItems = cloneDeep(this.itemsForSort);
 
     const isExist = this.sortedItems.some(e => e.hasOwnProperty(this.propertyNameForSort));

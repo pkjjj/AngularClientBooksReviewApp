@@ -2,8 +2,8 @@
     <div class="row mt-6">
 
       <div class="col-2 mb-4 w-fit-content">
-        <img *ngIf="review.applicationUser.avatar" src="data:image/png;base64,{{review.applicationUser.avatar}}" alt="Avatar" class="avatar-size">
-        <p class="fs-min font-color-gray fw-bold element">{{review.applicationUser.name}}</p>
+        <img *ngIf="review.userAvatar" src="data:image/png;base64,{{review.userAvatar}}" alt="Avatar" class="avatar-size">
+        <p class="fs-min font-color-gray fw-bold element">{{review.userName}}</p>
       </div>
       <div class="col-10 w-fit-content max-width-description">
         <p class="fs-medium several-lines" id={{review.id}} #description>{{review.description}}</p>

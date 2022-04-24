@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 import { Review } from 'src/app/interfaces/review';
 import { ReviewResponse } from 'src/app/interfaces/review-response';
 import { Subject } from 'rxjs';
+import { Book } from 'src/app/interfaces/book';
 
 @Injectable()
 
@@ -47,6 +48,10 @@ export class RequestService {
     return this._http.post(this._url + 'review/UpdateReview', review);
   }
 
+  public deleteReview(id: string) {
+    return this._http.delete(this._url + 'review/DeleteReview?id=' + id);
+  }
+
   public getReviews() {
     return this._http.get(this._url + 'review/GetReviews');
   }
@@ -57,5 +62,17 @@ export class RequestService {
 
   public getReviewsByUserId(id: string) {
     return this._http.get(this._url + 'review/GetReviewsByUserId?id=' + id);
+  }
+
+  public addBookToUser(bookId: string, userId: string) {
+    return this._http.patch(this._url + 'user/AddBookToUser/' + bookId + '/' + userId, {});
+  }
+
+  public deleteBookFromUser(bookId: string, userId: string) {
+    return this._http.patch(this._url + 'user/DeleteUserBook/' + bookId + '/' + userId, {});
+  }
+
+  public getUserBooks(id: string) {
+    return this._http.get(this._url + 'user/GetUserBooks?id=' + id);
   }
 }

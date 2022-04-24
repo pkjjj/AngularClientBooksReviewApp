@@ -6,13 +6,13 @@
 
   <!-- <app-rating  [rating]="reviews[0].rating" [backgroundColor]="backgroundColorForRating"></app-rating> -->
 
-  <div class="d-flex align-items-center mb-3">
-    <a class="d-inline fs-min" (click)="checkOnAuthentication()">Start your review of this book</a>
+  <!-- <div class="d-flex align-items-center mb-3">
+    <a class="d-inline fs-min" (click)="checkOnAuthentication()">Start your review of this book</a> -->
     <!-- <button class="btn btn-black ms-3 rounded-pill" >Write</button> -->
-  </div>
+  <!-- </div> -->
 
   <div class="mb-6">
-    <app-writting-review [book]="book"></app-writting-review>
+    <app-writting-review [bookId]="book.id"></app-writting-review>
   </div>
 
 </div>

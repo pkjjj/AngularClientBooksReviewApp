@@ -1,6 +1,7 @@
 import { AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, QueryList, Renderer2, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { Book } from '../interfaces/book';
 import { Review } from '../interfaces/review';
+import { ReviewForFullBookInfo } from '../interfaces/review-for-full-book-info';
 import { User } from '../interfaces/user';
 import { RequestService } from '../shared/services/request.service';
 import { ReviewsService } from '../shared/services/reviews.service';
@@ -15,7 +16,7 @@ export class ReviewComponent implements AfterViewInit {
   @ViewChildren('description') descriptionElements: QueryList<ElementRef<HTMLParagraphElement>>;
   @ViewChildren('refElement') refElements: QueryList<ElementRef<HTMLParagraphElement>>;
   @Input() public book: Book;
-  @Input() public reviews: Review[];
+  @Input() public reviews: ReviewForFullBookInfo[];
   public userText: string;
   public showSuccessWindow = false;
   public showError = false
@@ -28,10 +29,10 @@ export class ReviewComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this._reviewsService.getUpdatedReviews()
-      .subscribe(reviews => {
-        console.log(reviews);
+      .subscribe((reviews: ReviewForFullBookInfo[]) => {
+        console.log("update from page book(reviews)")
         this.reviews = reviews;
-      })
+      });
     setTimeout(() => {
       this.descriptionElements.forEach((el, index) => {
         this.reviews[index].isOverflow = this.isOverflow(el) ? true : false;

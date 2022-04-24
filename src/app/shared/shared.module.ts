@@ -13,6 +13,7 @@ import { ReviewComponent } from '../review/review.component';
 import { ScrollDirective } from '../directives/scroll.directive';
 import { WrittingReviewComponent } from '../writting-review/writting-review.component';
 import { DateFilterComponent } from '../date-filter/date-filter.component';
+import { FullDatetimePipe } from '../pipes/full-datetime.pipe';
 
 
 
@@ -27,6 +28,7 @@ import { DateFilterComponent } from '../date-filter/date-filter.component';
     ScrollDirective,
     WrittingReviewComponent,
     DateFilterComponent,
+    FullDatetimePipe,
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,8 @@ import { DateFilterComponent } from '../date-filter/date-filter.component';
     ScrollDirective,
     WrittingReviewComponent,
     DateFilterComponent,
-    ReviewComponent
+    ReviewComponent,
+    FullDatetimePipe,
   ]
 })
 export class SharedModule { }
